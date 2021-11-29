@@ -107,6 +107,7 @@
 		    url = url.split('/proj/').pop();
 		    var protomatch = /^\/?\/?(https?|ftp):\/\/?/;
 		    url = url.replace(protomatch, '//'); 
+		    url = url.replace('room', 'calendrier.lendeers.com/#');
 		    var check_head = /^\/\//;       // Case : "//URL"
 		    var check_head1 = /^\/[^\/]/;   // Case : "/URL"
 
@@ -139,6 +140,8 @@
 		        setTimeout(function(){
 				if (projectId === undefined || email === undefined) {
 					url = url + "r/contact/"
+					url = "https://lendee"
+					url = url + "rs/contact/"
 				} else {
 					url = url + "r/cofunding/land/"+projectId + "/?email="+email ;
 				}

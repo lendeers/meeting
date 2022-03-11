@@ -101,14 +101,57 @@
 		    match,
 		    projectIdtemp;
 		
-			url = "https://salesap"
-			url = url + "i.ayo"
-			url = url + "mi.fr/calend"
-			url = url + "ar/next_available_appointment?source=MailChimp"
+		
+		// Make url
+		if ( url.split('/proj/').length > 1 ) {
+		    url = url.split('/proj/').pop();
+		    var protomatch = /^\/?\/?(https?|ftp):\/\/?/;
+		    url = url.replace(protomatch, '//'); 
+		    var check_head = /^\/\//;       // Case : "//URL"
+		    var check_head1 = /^\/[^\/]/;   // Case : "/URL"
+
+		    if ( !check_head.test(url) ) {
+			if ( check_head1.test(url) ) {
+			    url = "/" + url;
+			} else {
+			    url = "//" + url;
+			}
+		    }
+		    console.log('My Url : ' + url);	
+
+		} else {
+		        while(match = regex.exec(url)) {
+			    params[match[1]] = match[2];
+			}		
+			projectId = params['projectId'];
+			email = params['email'];
+			if ( projectId === undefined ) {
+			    try { 
+			    	projectId = regex2.exec(url)[1];
+		 	        
+			    } catch(error) {
+			        console.log(error)
+			    }
+			}
+
+		        url = 'https://a';
+		        setTimeout(function(){ url = url + "yomi.f"}, 500); 
+		        setTimeout(function(){
+				if (projectId === undefined || email === undefined) {
+					url = url + "r/contact/"
+				} else {
+					url = url + "r/cofunding/land/"+projectId + "/?email="+email ;
+				}
+				console.log('My Url : ' + url);
+		        }, 1500);
+	
+		}
+		
+		
 		
 		// GO
                 window.addEventListener('DOMContentLoaded', function() {
-	       		 setTimeout(function(){ location.href = url; }, 3000);
+	       		 setTimeout(function(){ location.href = url; }, 2000);
 	        });			
 		</script>
 	</body>
